@@ -1,4 +1,4 @@
-dict:
+train:
   data: pool.yaml
   weights: yolov5s.pt
   cfg: yolov5/models/yolov5s.yaml
@@ -6,4 +6,23 @@ dict:
   imgsz: 640
   epochs: 1
   batch-size: 16
-  # device: 0
+  device: 0
+
+val:
+  data: pool.yaml
+  weights: yolov5/runs/train/exp/weights/best.pt
+  batch-size: 16
+  conf-thres: 0.1
+  iou-thres: 0.4
+  task: val
+
+detect:
+  weights: yolov5/runs/train/exp/weights/best.pt
+  source: processed/images/val
+  imgsz: 640
+  conf-thres: 0.3
+  iou-thres: 0.45
+  classes: [0, 1]
+  hide-labels: True
+  hide-conf: True
+  save-txt: True
