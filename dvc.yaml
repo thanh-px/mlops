@@ -1,0 +1,9 @@
+stages:
+  preprocess:
+    cmd: python preprocess_data.py
+    deps:
+    - preprocess_data.py
+    params:
+    - dataset
+    outs:
+    - processed

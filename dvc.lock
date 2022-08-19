@@ -1,0 +1,17 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python preprocess_data.py
+    deps:
+    - path: dataset
+      md5: 0ea4d62569afa1f3a071040754fcfb7e.dir
+      size: 171566547
+      nfiles: 4500
+    - path: preprocess_data.py
+      md5: 5ebecc21f19d6d7bc4b57489589dc600
+      size: 1575
+    outs:
+    - path: processed
+      md5: 7c2e3468e649a8e7f29398a8926061db.dir
+      size: 171566547
+      nfiles: 4500
