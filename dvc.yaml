@@ -2,9 +2,26 @@ stages:
   preprocess:
     cmd: python preprocess_data.py
     deps:
-    - preprocess_data.py
+      - preprocess_data.py
+      - dataset
     outs:
-    - processed
+      - processed
 
   train:
-    cmd: python yolov5/train.py ${dict}
+    cmd: python yolov5/train.py ${train}
+    deps:
+      - yolov5/train.py
+
+  val:
+    cmd: python yolov5/val.py ${val}
+    deps:
+      - yolov5/val.py
+    outs:
+      - yolov5/runs/val
+
+  detect:
+    cmd: python yolov5/detect.py ${detect}
+    deps: 
+      - yolov5/detect.py
+    outs:
+      - yolov5/runs/detect
