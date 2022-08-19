@@ -3,7 +3,8 @@ stages:
     cmd: python preprocess_data.py
     deps:
     - preprocess_data.py
-    params:
-    - dataset
     outs:
     - processed
+
+  train:
+    cmd: python yolov5/train.py ${dict}
