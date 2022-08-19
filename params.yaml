@@ -1,0 +1,9 @@
+dict:
+  data: yolov5/data/pool.yaml
+  weights: yolov5s.pt
+  cfg: yolov5/models/yolov5s.yaml
+  hyp: yolov5/data/hyps/hyp.scratch-low.yaml
+  imgsz: 640
+  epochs: 1
+  batch-size: 16
+  device: 0
