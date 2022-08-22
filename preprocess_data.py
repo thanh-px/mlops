@@ -47,4 +47,4 @@ if __name__ == "__main__":
         else:
             preprocess(task, folder="val")
 
-    create_config(os.path.join(ROOT_DIR, "yolov5", "data", "pool.yaml"))
+    create_config(os.path.join(ROOT_DIR, "yolov5", "data", "custom_dataset.yaml"))
