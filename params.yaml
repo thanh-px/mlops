@@ -1,5 +1,5 @@
 train:
-  data: pool.yaml
+  data: yolov5/data/custom_dataset.yaml
   weights: yolov5s.pt
   cfg: yolov5/models/yolov5s.yaml
   hyp: yolov5/data/hyps/hyp.scratch-low.yaml
@@ -9,7 +9,7 @@ train:
   device: 0
 
 val:
-  data: pool.yaml
+  data: yolov5/data/custom_dataset.yaml
   weights: yolov5/runs/train/exp/weights/best.pt
   batch-size: 16
   conf-thres: 0.1
