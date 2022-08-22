@@ -5,6 +5,7 @@ from tqdm import tqdm
 
 ROOT_DIR = os.path.dirname(os.path.abspath("mlops"))
 OUTPUT_DIR = os.path.join(ROOT_DIR, "processed")
+NAMES = ["Human", "Head"] 
 
 
 def preprocess(task, folder):
@@ -19,14 +20,22 @@ def preprocess(task, folder):
         dst_label = os.path.join(OUTPUT_DIR, "labels", folder, annotation)
         shutil.copyfile(ori_label, dst_label)
 
+def create_config(file_name):
+    nc = len(NAMES)
+    names = " ".join(NAMES)
+    with open(file_name, "w") as f:
+        f.write(f"path: {OUTPUT_DIR}\n")
+        f.write("train: images/train\n")
+        f.write("val: images/val\n")
+        f.write(f"nc: {nc}\n")
+        f.write(f"names: {names}")
+
 
 if __name__ == "__main__":
     if not os.path.exists(OUTPUT_DIR):
         os.makedirs(OUTPUT_DIR)
-        os.makedirs(os.path.join(OUTPUT_DIR, "images"))
         os.makedirs(os.path.join(OUTPUT_DIR, "images", "train"))
         os.makedirs(os.path.join(OUTPUT_DIR, "images", "val"))
-        os.makedirs(os.path.join(OUTPUT_DIR, "labels"))
         os.makedirs(os.path.join(OUTPUT_DIR, "labels", "train"))
         os.makedirs(os.path.join(OUTPUT_DIR, "labels", "val"))
 
@@ -37,3 +46,5 @@ if __name__ == "__main__":
        
         else:
             preprocess(task, folder="val")
+
+    create_config(os.path.join(ROOT_DIR, "yolov5", "data", "pool.yaml"))
